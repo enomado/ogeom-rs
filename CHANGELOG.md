@@ -184,6 +184,17 @@ bump may break the API and a patch bump may not.
 
 ### Changed
 
+- **The kernel's scope and its capability ledger are stated in its own
+  terms.** The parity audit against another kernel's public headers is
+  gone: `docs/PARITY.md`, `docs/parity/` and the header-profiling tool are
+  removed. `docs/capabilities.toml` lists the kernel's 90 capabilities with
+  the evidence for each, and `docs/CAPABILITIES.md` is its rendered form,
+  held to the code by `tools/capabilities.py check`. Refusal messages that
+  pointed at `docs/PARITY.md` point at `docs/CAPABILITIES.md`. Module
+  docs no longer map modules to another kernel's packages.
+- **`PROVENANCE.md` records where the code and design came from.**
+  `CONTRIBUTING.md` now forbids reading another kernel's implementation
+  source for work here, by people or tools.
 - **A line touching a circle or ellipse in its plane meets it in closed
   form.** The closed form left every tangent line/conic pair to the
   sampling path, at about a millisecond a pair, and a rolling-ball blend
@@ -246,6 +257,20 @@ bump may break the API and a patch bump may not.
   face's boundary into dust. An exact pcurve is never reported, but one
   only within its tolerance of the edge can be: the test is a heuristic,
   and it is reported as suspect, not broken.
+
+- **The licence changes to LGPL-2.1-only.** It was MIT OR Apache-2.0.
+  ogeom was built with Open CASCADE Technology as its reference kernel:
+  the public API vocabulary, the data-model conventions and the default
+  tolerances follow it, the project's first goal was interoperability
+  with OCCT-based software, and for one day OCCT's implementation source
+  was read. That makes the kernel a derivative work in the licensing
+  sense, whatever the side-by-side audit found (it found no translated
+  code). LGPL-2.1, the licence OCCT itself carries, states that
+  position, and `PROVENANCE.md` has the full record. Copies of earlier
+  releases keep the terms they were distributed under. The rule against
+  naming another kernel in committed files is dropped with it: the
+  licence and the provenance name OCCT, and code and docs write in the
+  field's vocabulary.
 
 ### Fixed
 
